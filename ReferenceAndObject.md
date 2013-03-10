@@ -71,6 +71,7 @@ string 和 tuple 都是不可变对象，所以在进行改变的时候肯定都
 #### 函数对象
 在 python 中函数也是对象，所以我们可以像整数赋值一样，将函数赋值给一个变量,将函数作为参数传递给另一个函数,我觉得这也是为什么python中存在 decorator 的一个原因 
 
-引用:
-[http://zh.wikipedia.org/wiki/%E5%AF%B9%E8%B1%A1_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)]
+参考:
+
+http://zh.wikipedia.org/wiki/%E5%AF%B9%E8%B1%A1_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)
 python群 22507237 的 @冒泡 大神 
