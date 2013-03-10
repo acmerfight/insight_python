@@ -6,4 +6,4 @@
 #### 举例:
 简单的赋值语句 a = 10000, a 指向了 1 所在的那块内存。a 引用的对象就是存放 1 的内存地址。
 is 判断是否是同一个对象，== 判断值是否相等，id()取得对象的内存地址 
-[id]: https://github.com/acmerfight/insight_python/blob/develop/snapshot1.png/to/img
+[id]: https://github.com/acmerfight/insight_python/blob/develop/snapshot1.png
