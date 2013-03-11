@@ -15,4 +15,13 @@
     1
     2
     3
+正如你所看到的，list是可以迭代的。  
 
+###List对象的C结构  
+Python中一个list对象是用下边的C的结构来表现的。ob_item是用来保存元素的指针数组，allocated是在内存中预先分配的总容量
+
+    typedef struct {
+        PyObject_VAR_HEAD
+        PyObject **ob_item;
+        Py_ssize_t allocated;
+    } PyListObject;
