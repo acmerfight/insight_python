@@ -2,6 +2,7 @@
 这篇文章介绍了Python中list是如何实现的。  
 在Python中list特别有用。让我们来看下list的内部是如何实现的。  
 来看下面简单的Python脚本，在list中添加一些整数并将他们打印出来。  
+
     >>> l = []
     >>> l.append(1)
     >>> l.append(2)
