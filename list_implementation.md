@@ -61,4 +61,5 @@ Python中一个list对象是用下边的C的结构来表现的。ob_item是用�
         resize ob_item (list of pointers) to size new_allocated
         return 0
 
-开辟了四个内存空间来存放list中的元素，存放的第一个元素是1。你可以从下图中看到L[0]指向了我们刚刚加进去的元素。虚线的框代表了申请了但是还没有使用的内存空间
+开辟了四个内存空间来存放list中的元素，存放的第一个元素是1。你可以从下图中看到L[0]指向了我们刚刚加进去的元素。虚线的框代表了申请了但是还没有使用的内存空间  
+![](https://raw.github.com/acmerfight/insight_python/master/list.png)
