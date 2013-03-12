@@ -40,3 +40,25 @@ Python中一个list对象是用下边的C的结构来表现的。ob_item是用�
         return list object 
 
 非常重要的是知道allocated的大小和list大小之间的关系，list的大小和len(L)是一样的，而allocated的大小是在内存中已经申请空间大小。通常你会看到allocated的值要比list的值要大。这是为了避免每次有新元素加入list时都要调用realloc进行内存分配。接下来我们会看到更多关于这些的内容。
+###Append
+我们在list中追加一个整数:L.append(1)。发生了什么？调用了内部的C函数app1()
+
+    arguments: list object, new element
+    returns: 0 if OK, -1 if not
+    app1:
+        n = size of list
+        call list_resize() to resize the list to size n+1 = 0 + 1 = 1
+        list[n] = list[0] = new element
+        return 0
+
+来让我们看下list_resize()。list_resize()会申请多余的空间以避免调用多次list_resize()函数，list增长的模型是:0, 4, 8, 16, 25, 35, 46, 58, 72, 88, …
+
+    arguments: list object, new size
+    returns: 0 if OK, -1 if not
+    list_resize:
+        new_allocated = (newsize >> 3) + (newsize < 9 ? 3 : 6) = 3
+        new_allocated += newsize = 3 + 1 = 4
+        resize ob_item (list of pointers) to size new_allocated
+        return 0
+
+开辟了四个内存空间来存放list中的元素，存放的第一个元素是1。你可以从下图中看到L[0]指向了我们刚刚加进去的元素。虚线的框代表了申请了但是还没有使用的内存空间
