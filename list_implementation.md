@@ -79,7 +79,7 @@ Python中一个list对象是用下边的C的结构来表现的。ob_item是用�
 虚线框表示已经申请但是没有使用的内存。申请了8个内存空间但是list的只使用了其中5个内存空间  
 insert的时间复杂度是O(n)
 ###Pop
-当你弹出list的最后一个元素：L.pop()。调用listpop()，list_resize在函数listpop()内部被调用，如果这时list的大小（译者注：弹出元素后）小于allocated size（译者注：已经申请的内存空间）的一半。这时申请的内存空间将会缩小。
+当你弹出list的最后一个元素：L.pop()。调用listpop()，list_resize在函数listpop()内部被调用，如果这时list实际使用空间的大小（译者注：弹出元素后）小于allocated size（译者注：已经申请的内存空间）的一半。这时申请的内存空间将会缩小。
 
     arguments: list object
     returns: element popped
@@ -90,4 +90,5 @@ insert的时间复杂度是O(n)
         set list object size to 4
         return last element
 
-Pop的时间复杂度是O(1)
+Pop的时间复杂度是O(2)  
+![](https://raw.github.com/acmerfight/insight_python/master/list_pop.png)
