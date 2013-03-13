@@ -76,5 +76,5 @@ Python中一个list对象是用下边的C的结构来表现的。ob_item是用�
         set new element at offset where
         return 0  
 ![](https://raw.github.com/acmerfight/insight_python/master/list_insert.png)  
-虚线
-
+虚线框表示已经申请但是没有使用的内存。申请了8个内存空间但是list的只使用了其中5个内存空间  
+insert的时间复杂度是O(n)
