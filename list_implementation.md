@@ -74,4 +74,6 @@ Python中一个list对象是用下边的C的结构来表现的。ob_item是用�
         starting at the last element up to the offset where, right shift each element 
         set new element at offset where
         return 0  
+![](https://raw.github.com/acmerfight/insight_python/master/list_insert.png)  
+虚线
 
