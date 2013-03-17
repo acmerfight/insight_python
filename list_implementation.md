@@ -96,4 +96,26 @@ Pop的时间复杂度是O(1)
 让我们再弹出一个元素。在list_resize内部，size – 1 = 4 – 1 = 3 比allocated slots（已经申请的空间）的一半还要小。所以list的申请空间缩小到6个，list的实际使用空间现在是3个  
 你可以发现（下图）3号和4号内存空间还存储着一些整数，但是list的实际使用空间却只有3个了。  
 ![](https://raw.github.com/acmerfight/insight_python/master/list_pop_2.png)  
+###Remove
+Python list对象有一个方法可以移除一个指定的元素。调用listremove()。  
 
+    arguments: list object, element to remove
+    returns none if OK, null if not
+    listremove:
+        loop through each list element:
+        if correct element:
+            slice list between element's slot and element's slot + 1
+            return none
+        return null
+
+切开list和删除元素，调用了list_ass_slice()（译者注：在上文slice list between element's slot and element's slot + 1被调用），来看下list_ass_slice()是如何工作的。在这里，低位为1 高位为2（译者注：传入的参数），我们移除在1号内存空间存储的数据5
+
+    arguments: list object, low offset, high offset
+    returns: 0 if OK
+    list_ass_slice:
+        copy integer 5 to recycle list to dereference it
+        shift elements from slot 2 to slot 1
+        resize list to 5 slots
+        return 0
+
+Remove的时间复杂度为O(n)
