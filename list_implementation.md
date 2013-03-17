@@ -40,7 +40,7 @@ Python中list是用下边的C语言的结构来表示的。ob_item是用来保�
         set list's allocated var to 0 = 0 slots
         return list object 
 
-非常重要的是知道list申请内存空间的大小（后问用allocated代替）的大小和list实际存储元素所占空间的大小(ob_size)之间的关系，ob_size的大小和len(L)是一样的，而allocated的大小是在内存中已经申请空间大小。通常你会看到allocated的值要比ob_size的值要大。这是为了避免每次有新元素加入list时都要调用realloc进行内存分配。接下来我们会看到更多关于这些的内容。
+非常重要的是知道list申请内存空间的大小（后文用allocated代替）的大小和list实际存储元素所占空间的大小(ob_size)之间的关系，ob_size的大小和len(L)是一样的，而allocated的大小是在内存中已经申请空间大小。通常你会看到allocated的值要比ob_size的值要大。这是为了避免每次有新元素加入list时都要调用realloc进行内存分配。接下来我们会看到更多关于这些的内容。
 ###Append
 我们在list中追加一个整数:L.append(1)。发生了什么？调用了内部的C函数app1()
 
@@ -138,4 +138,4 @@ Remove的时间复杂度为O(n)
     10           4             4 + 3
     20           9             9 + 7
     很显然,这个新长度小于原来的已分配空间长度,自然会导致 realloc 收缩内存。(不容易啊)
-    引自（深入Python编程）
+    引自《深入Python编程》
