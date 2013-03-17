@@ -63,9 +63,9 @@ Python中list是用下边的C语言的结构来表示的。ob_item是用来保�
         return 0
 
 开辟了四个内存空间来存放list中的元素，存放的第一个元素是1。你可以从下图中看到L[0]指向了我们刚刚加进去的元素。虚线的框代表了申请了但是还没有使用(存储元素)的内存空间  
-![](https://raw.github.com/acmerfight/insight_python/master/list.png)  
+![](https://raw.github.com/acmerfight/insight_python/master/images/list.png)  
 我们继续加入一个元素：L.append(2)。调用list_resize,同时n+1=2。但是因为allocated（译者注：已经申请的空间大小）是4。所以没有必要去申请新的内存空间。相同的事情发生在再次在list中添加两个元素的时候：L.append(3),L.append(4)。下图展示了到目前为止我们做了什么。  
-![](https://raw.github.com/acmerfight/insight_python/master/list_4.png)  
+![](https://raw.github.com/acmerfight/insight_python/master/images/list_4.png)  
 ###Insert
 现在我们在列表的第一个位置插入一个整数5:L.insert(1, 5),看看内部发生了什么。调用了ins1()
 
@@ -77,7 +77,7 @@ Python中list是用下边的C语言的结构来表示的。ob_item是用来保�
         set new element at offset where
         return 0  
 
-![](https://raw.github.com/acmerfight/insight_python/master/list_insert.png)  
+![](https://raw.github.com/acmerfight/insight_python/master/images/list_insert.png)  
 虚线框表示已经申请但是没有使用的内存。申请了8个内存空间但是list实际用来存储元素只使用了其中5个内存空间  
 insert的时间复杂度是O(n)
 ###Pop
@@ -93,11 +93,11 @@ insert的时间复杂度是O(n)
         return last element
 
 Pop的时间复杂度是O(1)  
-![](https://raw.github.com/acmerfight/insight_python/master/list_pop.png)  
+![](https://raw.github.com/acmerfight/insight_python/master/images/list_pop.png)  
 你可以发现4号内存空间指向还指向那个数值（译者注：弹出去的那个数值），但是很重要的是ob_size现在却成了4.  
 让我们再弹出一个元素。在list_resize内部，size – 1 = 4 – 1 = 3 比allocated（已经申请的空间）的一半还要小。所以list的申请空间缩小到6个，list的实际使用空间现在是3个(译者注：根据代码中resize list to size n+1 = 5 -> 4 more slots will be allocated) 
 你可以发现（下图）3号和4号内存空间还存储着一些整数，但是list的实际使用(存储元素)空间却只有3个了。  
-![](https://raw.github.com/acmerfight/insight_python/master/list_pop_2.png)  
+![](https://raw.github.com/acmerfight/insight_python/master/images/list_pop_2.png)  
 ###Remove
 Python list对象有一个方法可以移除一个指定的元素。调用listremove()。  
 
@@ -121,11 +121,12 @@ Python list对象有一个方法可以移除一个指定的元素。调用listre
         return 0
 
 Remove的时间复杂度为O(n)  
-![](https://raw.github.com/acmerfight/insight_python/master/list_remove.png)
+![](https://raw.github.com/acmerfight/insight_python/master/images/list_remove.png)
 
 ###译者注：
 文中list的sort部分没有进行翻译  
 核心部分  
+
     我们能看到 Python 设计者的苦心。在需要的时候扩容,但又不允许过度的浪费,适当的内存回收是非常必要的。
     这个确定调整后的空间大小算法很有意思。
     调整后大小 (new_allocated) = 新元素数量 (newsize) + 预留空间 (new_allocated)
