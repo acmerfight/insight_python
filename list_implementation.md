@@ -133,7 +133,7 @@ Remove的时间复杂度为O(n)
     调整后的空间肯定能存储 newsize 个元素。要关注的是预留空间的增长状况。
     将预留算法改成 Python 版就更清楚了:(newsize // 8) + (newsize < 9 and 3 or 6)。
     当 newsize >= allocated,自然按照这个新的长度 "扩容" 内存。
-    而如果 newsize < allocated,且利用率低于一一半呢?
+    而如果 newsize < allocated,且利用率低于一半呢?
     allocated    newsize       new_size + new_allocated
     10           4             4 + 3
     20           9             9 + 7
