@@ -90,5 +90,9 @@ insert的时间复杂度是O(n)
         set list object size to 4
         return last element
 
-Pop的时间复杂度是O(2)  
-![](https://raw.github.com/acmerfight/insight_python/master/list_pop.png)
+Pop的时间复杂度是O(1)  
+![](https://raw.github.com/acmerfight/insight_python/master/list_pop.png)  
+你可以发现4号内存空间指向还指向那个数值（译者注：弹出去的那个数值），但是很重要的是list的实际使用空间现在成了4.  
+让我们再弹出一个元素。在list_resize内部，size – 1 = 4 – 1 = 3 比allocated slots（已经申请的空间）的一半还要小。所以list的申请空间缩小到6个，list的实际使用空间现在是3个  
+你可以发现（下图）3号和4号内存空间还存储着一些整数，但是list的实际使用空间却只有3个了。  
+
