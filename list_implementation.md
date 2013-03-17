@@ -118,4 +118,5 @@ Python list对象有一个方法可以移除一个指定的元素。调用listre
         resize list to 5 slots
         return 0
 
-Remove的时间复杂度为O(n)
+Remove的时间复杂度为O(n)  
+![](https://raw.github.com/acmerfight/insight_python/master/list_remove.png)
