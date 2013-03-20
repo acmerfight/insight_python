@@ -6,7 +6,7 @@
 
 但是问题不会解决的。曾几何时我发现流行的web开发语言PHP几乎[完全无视字符编码问题](http://ca3.php.net/manual/en/language.types.string.php)，对于一个字符轻率的采用8位(或1个字节)来表示，这使得开发良好的国际化web应用几乎不可能，我**再也无法忍受了**
 
-所以我宣布:如果在2003年你仍然在从事编程工作，并且还不了解characters，character sets，encoding, Unicode的基础知识，我就 *抓住* 你，惩罚你让你在潜艇中剥6个月的洋葱。我发誓我会那样做。  
+所以我宣布:如果在2003年你仍然在从事编程工作，并且还不了解characters，character sets，encoding, Unicode的基础知识，我就**抓住** 你，惩罚你让你在潜艇中剥6个月的洋葱。我发誓我会那样做。 
 
 还有一件事：  
 
