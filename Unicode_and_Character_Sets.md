@@ -44,3 +44,8 @@ x表示可用的位
 ###结束语
 花了两天时间终于写完了，相信看到这里大家对于字符编码有了较为清楚的认识，当然文章中肯定存在不准确之处，希望大家批评指正。  
 邮箱：acmerfight圈gmail.com
+
+#####参考资料
+[The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)](http://www.joelonsoftware.com/articles/Unicode.html)  
+[字符编码笔记：ASCII，Unicode和UTF-8](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html)  
+[字符集和字符编码](http://www.cnblogs.com/skynet/archive/2011/05/03/2035105.html)  
