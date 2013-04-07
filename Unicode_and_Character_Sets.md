@@ -46,6 +46,10 @@ x表示可用的位
 邮箱：acmerfight圈gmail.com
 
 #####参考资料
+[字符编码](https://zh.wikipedia.org/wiki/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81)  
 [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)](http://www.joelonsoftware.com/articles/Unicode.html)  
 [字符编码笔记：ASCII，Unicode和UTF-8](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html)  
 [字符集和字符编码](http://www.cnblogs.com/skynet/archive/2011/05/03/2035105.html)  
+[Windows 记事本的 ANSI、Unicode、UTF-8 这三种编码模式有什么区别？](http://www.zhihu.com/question/20650946)  
+[如何向非技术人员解释 Unicode 是什么](http://www.zhihu.com/question/19943875)  
+[字符编解码的故事（ASCII，ANSI，Unicode，Utf-8）](http://www.cnblogs.com/zjking99/archive/2012/03/27/2419275.html)
