@@ -51,7 +51,7 @@ Python对于函数中默认参数的处理往往会给新手造成困扰（但�
             value = expression
         # use/modify value here
 
-在老代码中，written before “object” was introduced，你有时会看到
+在比较老的代码中，written before “object” was introduced，你有时会看到
 
     sentinel = ['placeholder']
 
@@ -118,6 +118,6 @@ The “i=i” part binds the parameter “i” (a local variable) to the current
 
 然而我不推荐你平时这么使用。
 
-另一个重置默认参数的方法是重新执行相同的`def`语句，Python will then create a new binding to the code object, 计算默认参数，and assign the function object to the same variable as before. But again, only do that if you know exactly what you’re doing.
+另一个重置默认参数的方法是重新执行相同的`def`语句，Python将会和代码对象创建一个新的函数对象(Python will then create a new binding to the code object), 并计算默认参数，并且把新创建的函数对象赋值给了和上次相同的变量。但是再次强调，只有你清晰地知道在做什么的情况下你在这么做。(and assign the function object to the same variable as before. But again, only do that if you know exactly what you’re doing.)
 
 And yes, if you happen to have the pieces but not the function, you can use the function class in the new module to create your own function object.
