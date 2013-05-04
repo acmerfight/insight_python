@@ -76,12 +76,12 @@ The “i=i” part binds the parameter “i” (a local variable) to the current
 另外的两个用途local caches/memoization
         
     def calculate(a, b, c, memo={}):
-    try:
-        value = memo[a, b, c] # return already calculated value
-    except KeyError:
-        value = heavy_calculation(a, b, c)
-        memo[a, b, c] = value # update the memo dictionary
-    return value
+        try:
+            value = memo[a, b, c] # return already calculated value
+        except KeyError:
+            value = heavy_calculation(a, b, c)
+            memo[a, b, c] = value # update the memo dictionary
+        return value
 
 （对一些递归算法非常好用）
 
