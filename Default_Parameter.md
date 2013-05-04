@@ -53,7 +53,7 @@ Python对于函数中默认参数的处理往往会给新手造成困扰（但�
 
 在老代码中，written before “object” was introduced，你有时会看到
 
-'sentinel = ['placeholder']'
+    sentinel = ['placeholder']
 
 used to create a non-false object with a unique identity; [] creates a new list every time it is evaluated.
 #### 正确地使用可变参数
