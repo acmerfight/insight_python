@@ -114,7 +114,7 @@ The “i=i” part binds the parameter “i” (a local variable) to the current
     >>> function.func_defaults
     ([1],)
 
-然而我推荐你平时这么使用。
+然而我不推荐你平时这么使用。
 
 另一个重置默认参数的方法是重新执行相同的`def`语句，Python will then create a new binding to the code object, 计算默认参数，and assign the function object to the same variable as before. But again, only do that if you know exactly what you’re doing.
 
