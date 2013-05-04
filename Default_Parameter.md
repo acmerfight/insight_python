@@ -55,7 +55,7 @@ Python对于函数中默认参数的处理往往会给新手造成困扰（但�
 
 used to create a non-false object with a unique identity; [] creates a new list every time it is evaluated.
 #### 正确地使用可变参数
-最后需要注意的是一些高深的Python代码经常会使用这个机制的优势；举个例子，如果在一个循环里创建一些UI上的按钮，你可能会尝试这样去做：
+最后需要注意的是一些高深的Python代码经常会利用这个机制的优势；举个例子，如果在一个循环里创建一些UI上的按钮，你可能会尝试这样去做：
 
     for i in range(10):
         def callback():
@@ -116,6 +116,6 @@ The “i=i” part binds the parameter “i” (a local variable) to the current
 
 然而我推荐你平时这么使用。
 
-另一个重置默认参数的方法是重新执行相同的`def`语句，Python will then create a new binding to the code object, nd assign the function object to the same variable as before. But again, only do that if you know exactly what you’re doing.
+另一个重置默认参数的方法是重新执行相同的`def`语句，Python will then create a new binding to the code object, 计算默认参数，and assign the function object to the same variable as before. But again, only do that if you know exactly what you’re doing.
 
 And yes, if you happen to have the pieces but not the function, you can use the function class in the new module to create your own function object.
