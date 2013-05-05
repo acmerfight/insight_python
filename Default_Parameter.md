@@ -10,7 +10,7 @@ PyFunctionObject 是运行期产生的。它提供一个动态环境,让 PyCodeO
 
 PyFunctionObject 让函数面向逻辑,而不仅仅是虚拟机。PyFunctionObject 和 PyCodeObject 组合起来才是一个完整的函数。
 
-下文翻译了一篇文章，有一些很好的例子。但是由于水平有限，有些不会翻译或者有些翻译有误，敬请谅解。
+下文翻译了一篇文章，有一些很好的例子。但是由于水平有限，有些不会翻译或者有些翻译有误，敬请谅解。如果有任何问题请发邮件到 acmerfight圈gmail.com,感激不尽
 
 
 [原文链接](http://effbot.org/zone/default-values.htm)
