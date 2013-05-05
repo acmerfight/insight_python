@@ -55,7 +55,7 @@ Python对于函数中默认参数的处理往往会给新手造成困扰（但�
 
     sentinel = ['placeholder']
 
-used to create a non-false object with a unique identity; [] creates a new list every time it is evaluated.
+    译者注：太水，真的不知道怎么翻译了。我说下我的理解 有时逻辑上可能需要传递一个None,而你的默认值可能又不是None,而且还刚好是个列表,列表不可    以写在默认值位置,所以你需要占位符,但是用None，你又不知道是不是调用者传递过来的那个
 #### 正确地使用可变参数
 最后需要注意的是一些高深的Python代码经常会利用这个机制的优势；举个例子，如果在一个循环里创建一些UI上的按钮，你可能会尝试这样去做：
 
@@ -64,14 +64,14 @@ used to create a non-false object with a unique identity; [] creates a new list 
             print "clicked button", i
         UI.Button("button %s" % i, callback)
 
-但是你却发现`callback`打印出相同的数字（在这个情况下很可能是9）。The reason for this is that Python’s nested scopes bind to variables, not object values, so all callback instances will see the current (=last) value of the “i” variable. To fix this, use explicit binding:
+但是你却发现`callback`打印出相同的数字（在这个情况下很可能是9）。原因是Python的嵌套作用域只是绑定变量，而不是绑定数值的，所以`callback`只看到了变量`i`绑定的最后一个数值。为了避免这种情况，使用显示绑定。
 
     for i in range(10):
         def callback(i=i):
             print "clicked button", i
         UI.Button("button %s" % i, callback)
 
-The “i=i” part binds the parameter “i” (a local variable) to the current value of the outer variable “i”.
+`i=i`把callback的参数`i`(一个局部变量)绑定到了当前外部的`i`变量的数值上。
 
 另外的两个用途local caches/memoization
         
@@ -85,7 +85,7 @@ The “i=i” part binds the parameter “i” (a local variable) to the current
 
 （对一些递归算法非常好用）
 
-对高度优化的代码而言， local rebinding of global names:
+对高度优化的代码而言， 会使用局部变量绑全局的变量:
 
     import math
 
