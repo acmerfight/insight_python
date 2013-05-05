@@ -1,3 +1,16 @@
+#### 文章的主题
+不要使用可变对象作为函数的默认参数例如 list，dict，因为`def`是一个可执行语句，只有`def`执行的时候才会计算默认默认参数的值，所以使用默认参数会造成函数执行的时候一直在使用同一个对象，引起bug。
+
+#### 基本原理
+在 Python 源码中,我们使用`def`来定义函数或者方法。在其他语言中,类似的东西往往只是一一个语法声明关键字,但`def`却是一个可执行的指令。Python代码执行的时候先会使用 compile 将其编译成 PyCodeObject.
+
+PyCodeObject 本质上依然是一种静态源代码,只不过以字节码方式存储,因为它面向虚拟机。因此 Code 关注的是如何执行这些字节码,比如栈空间大小,各种常量变量符号列表,以及字节码与源码行号的对应关系等等。是`def`语句使PyCodeObject和周围的环境变量一起组成了PyFunctionObject。
+
+PyFunctionObject 是运行期产生的。它提供一个动态环境,让 PyCodeObject 与运行环境关联起来。同时为函数调用提供一系列的上下文属性,诸如所在模块、全局名字空间、参数默认值等等。
+
+PyFunctionObject 让函数面向逻辑,而不仅仅是虚拟机。PyFunctionObject 和 PyCodeObject 组合起来才是一个完整的函数。
+
+
 [原文链接](http://effbot.org/zone/default-values.htm)
 
 Python对于函数中默认参数的处理往往会给新手造成困扰（但是通常只有一次）。
