@@ -68,7 +68,7 @@
 
 用`id(expression a) == id(expression b)`来判断两个表达式的结果是不是同一个对象的想法是有问题的。 
 
-`foo.bar` 这种形式叫 attribute reference [1]，它是表达式的一种。`foo`是一个instance object,`bar`是一个方法，这个时候表达式 foo.bar 返回的结果叫method object [2]。根据文档： 
+`foo.bar` 这种形式叫 attribute reference [1]，它是表达式的一种。`foo`是一个instance object,`bar`是一个方法，这个时候表达式`foo.bar`返回的结果叫method object [2]。根据文档： 
 
     When an instance attribute is referenced that isn’t a data attribute, 
     its class is searched. If the name denotes a valid class attribute 
@@ -101,8 +101,8 @@
 
 is 表达式 [4] 也是一样的，你现在得到了正确的结果，完全是因为 CPython 现在的实现细节决定的。现在的 is 的实现，是左右两边的对象都计算出来，然后再比较这两个对象的地址是否一样。万一哪天改成了，先算左边，保存地址，把左边释放掉，再算右边，再比较的话，你的 is 的结果可能就错了。官方文档里也提到了这个问题 [5]。我认为正确的方法也是像 id 那样，先把左右两边都计算下来，并显式绑定到各自的名字上，然后再用 is 判断。 
 
-[1] http://docs.python.org/2/reference/expressions.html#attribute-references 
-[2] http://docs.python.org/2/tutorial/classes.html#method-objects 
-[3] http://docs.python.org/2/library/functions.html#id 
-[4] http://docs.python.org/2/reference/expressions.html#index-68 
-[5] http://docs.python.org/2/reference/expressions.html#id16 
+[1] http://docs.python.org/2/reference/expressions.html#attribute-references   
+[2] http://docs.python.org/2/tutorial/classes.html#method-objects  
+[3] http://docs.python.org/2/library/functions.html#id  
+[4] http://docs.python.org/2/reference/expressions.html#index-68  
+[5] http://docs.python.org/2/reference/expressions.html#id16  
