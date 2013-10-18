@@ -105,4 +105,4 @@
 [2] http://docs.python.org/2/tutorial/classes.html#method-objects  
 [3] http://docs.python.org/2/library/functions.html#id  
 [4] http://docs.python.org/2/reference/expressions.html#index-68  
-[5] http://docs.python.org/2/reference/expressions.html#id16  
+[5] http://docs.python.org/2/reference/expressions.html#id26   
