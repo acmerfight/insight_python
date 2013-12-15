@@ -25,7 +25,7 @@ method是function与对象的结合。我们调用一个方法的时候，有些
 
     TypeError: unbound method get_weight() must be called with Human instance as first argument (got nothing instead)
 
-奥，原来未绑定的意思就是，这个方法必须使用一个`Human`实例作为第一个参数来调用啊。那我们来试试
+未绑定的方法必须使用一个`Human`实例作为第一个参数来调用啊。那我们来试试
 
     In [10]: Human.get_weight(Human(45))
     Out[10]: 45
