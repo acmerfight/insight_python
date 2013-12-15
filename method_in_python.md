@@ -39,7 +39,12 @@ method是function与对象的结合。我们调用一个方法的时候，有些
 
 这两种方式的结果一模一样。我们看下官方文档是怎么解释这种现象的。
 
-    When an instance attribute is referenced that isn’t a data attribute, its class is searched. If the name denotes a valid class attribute that is a function object, a method object is created by packing (pointers to) the instance object and the function object just found together in an abstract object: this is the method object. When the method object is called with an argument list, a new argument list is constructed from the instance object and the argument list, and the function object is called with this new argument list.
+    When an instance attribute is referenced that isn’t a data attribute, its class is searched. 
+    If the name denotes a valid class attribute that is a function object, a method object is 
+    created by packing (pointers to) the instance object and the function object just found together
+    in an abstract object: this is the method object. When the method object is called with an 
+    argument list, a new argument list is constructed from the instance object and the argument list, 
+    and the function object is called with this new argument list.
 
 原来我们常用的调用方法(`person.get_weight()`)是把调用的实例隐藏的作为一个参数`self`传递过去了啊。
 
