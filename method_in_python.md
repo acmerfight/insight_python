@@ -46,7 +46,7 @@ method是function与对象的结合。我们调用一个方法的时候，有些
     argument list, a new argument list is constructed from the instance object and the argument list, 
     and the function object is called with this new argument list.
 
-原来我们常用的调用方法(`person.get_weight()`)是把调用的实例隐藏的作为一个参数`self`传递过去了啊。
+原来我们常用的调用方法(`person.get_weight()`)是把调用的实例隐藏的作为一个参数`self`传递过去了, `self`只是一个普通的参数名称啊。
 
     In [13]: person.get_weight
     Out[13]: <bound method Human.get_weight of <__main__.Human object at 0x8e13bec>>
@@ -58,8 +58,22 @@ method是function与对象的结合。我们调用一个方法的时候，有些
 所以呢，`instance method` 就是实例对象与函数的结合，可以使用两种方式调用。
 
 1.  使用类调用，第一个参数明确的传递过去一个实例。
-2. 使用实例调用，调用的实例被作为第一个参数被隐含的传递过去。
+2.  使用实例调用，调用的实例被作为第一个参数被隐含的传递过去。
 
 #### class method
+
+    In [1]: class Human(object):
+       ...:     weight = 12
+       ...:     @classmethod
+       ...:     def get_weight(cls):
+       ...:         return cls.weight
+       ...:     
+
+    In [2]: Human.get_weight
+    Out[2]: <bound method type.get_weight of <class '__main__.Human'>>
+
+    In [3]: Human.get_weight()
+    Out[3]: 12
+
 
 #### static method
