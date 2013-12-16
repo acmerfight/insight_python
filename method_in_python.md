@@ -46,7 +46,7 @@ method是function与对象的结合。我们调用一个方法的时候，有些
     argument list, a new argument list is constructed from the instance object and the argument list, 
     and the function object is called with this new argument list.
 
-原来我们常用的调用方法(`person.get_weight()`)是把调用的实例隐藏的作为一个参数`self`传递过去了, `self`只是一个普通的参数名称啊。
+原来我们常用的调用方法(`person.get_weight()`)是把调用的实例隐藏的作为一个参数`self`传递过去了, `self` 只是一个普通的参数名称,不是关键字。
 
     In [13]: person.get_weight
     Out[13]: <bound method Human.get_weight of <__main__.Human object at 0x8e13bec>>
@@ -60,20 +60,43 @@ method是function与对象的结合。我们调用一个方法的时候，有些
 1.  使用类调用，第一个参数明确的传递过去一个实例。
 2.  使用实例调用，调用的实例被作为第一个参数被隐含的传递过去。
 
-#### class method
+#### classmethod
 
     In [1]: class Human(object):
        ...:     weight = 12
        ...:     @classmethod
        ...:     def get_weight(cls):
        ...:         return cls.weight
-       ...:     
 
     In [2]: Human.get_weight
     Out[2]: <bound method type.get_weight of <class '__main__.Human'>>
 
+我们看到`get_weight`是一个绑定在 `Human` 这个类上的method。调用下看看
+
     In [3]: Human.get_weight()
     Out[3]: 12
+    In [4]: Human().get_weight()
+    Out[4]: 12
 
+类和类的实例都能调用 `get_weight` 而且调用结果完全一样。都是将类 `Human`
+我们看到 `weight` 是属于 `Human` 类的属性，当然也是 `Human` 的实例的属性。那传递过去的参数 `cls` 是类还是实例呢？
+
+    In [1]: class Human(object):
+       ...:     weight = 12
+       ...:     @classmethod
+       ...:     def get_weight(cls):
+       ...:         print cls 
+
+    In [2]: Human.get_weight()
+    <class '__main__.Human'>
+
+    In [3]: Human().get_weight()
+    <class '__main__.Human'>
+
+我们看到传递过去的都是 `Human` 类,不是 `Human` 的实例，两种方式调用的结果没有任何区别。`cls` 只是一个普通的函数参数，调用时被隐含的传递过去。  
+总结起来
+
+1.  classmethod 是类与函数的结合  
+2.  我们可以只使用类来调用classmethod,可以避免将类实例化的开销。
 
 #### static method
