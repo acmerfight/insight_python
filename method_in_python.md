@@ -139,7 +139,7 @@ method是function与对象的结合。我们调用一个方法的时候，有些
 
 
 ##### 参考资料
-[1] http://julien.danjou.info/blog/2013/guide-python-static-class-abstract-methods
-[2] http://stackoverflow.com/questions/12179271/python-classmethod-and-staticmethod-for-beginner
-[3] https://groups.google.com/forum/?hl=zh-CN#!topic/python-cn/pD2mKUja_lk
-[4] http://stackoverflow.com/questions/155609/what-is-the-difference-between-a-method-and-a-function
+[1] http://julien.danjou.info/blog/2013/guide-python-static-class-abstract-methods  
+[2] http://stackoverflow.com/questions/12179271/python-classmethod-and-staticmethod-for-beginner  
+[3] https://groups.google.com/forum/?hl=zh-CN#!topic/python-cn/pD2mKUja_lk  
+[4] http://stackoverflow.com/questions/155609/what-is-the-difference-between-a-method-and-a-function  
