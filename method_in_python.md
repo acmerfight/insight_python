@@ -102,3 +102,37 @@ method是function与对象的结合。我们调用一个方法的时候，有些
 2.  使用类来调用 `classmethod` 可以避免将类实例化的开销。
 
 #### static method
+
+    In [1]: class Human(object):
+       ...:     @staticmethod
+       ...:     def add(a, b):
+       ...:         return a + b
+       ...:     def get_weight(self):
+       ...:         return self.add(1, 2)
+
+    In [2]: Human.add
+    Out[2]: <function __main__.add>
+
+    In [3]: Human().add
+    Out[3]: <function __main__.add>
+
+    In [4]: Human.add(1, 2)
+    Out[4]: 3
+
+    In [5]: Human().add(1, 2)
+    Out[5]: 3
+
+我们看到 `add` 在无论是类还是实例上都只是一个普通的函数，并没有绑定在任何一个特定的类或者实例上。可以使用类或者类的实例调用，并且没有任何隐含参数的传入。
+
+    In [6]: Human().add is Human().add
+    Out[6]: True
+
+    In [7]: Human().get_weight is Human().get_weight
+    Out[7]: False
+
+`add` 在两个实例上也是同一个对象。`instancemethod` 就不一样了，每次都会创建一个新的 `get_weight` 对象。  
+总结下
+
+1.  当一个函数逻辑上属于一个类又不依赖与类的属性的时候，可以使用 `staticmethod`。
+2.  使用 `staticmethod` 可以避免每次使用的时都会创建一个对象的开销。
+3.  `staticmethod` 可以使用类和类的实例调用。但是不依赖于类和类的实例状态。
