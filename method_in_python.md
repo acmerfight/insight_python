@@ -3,7 +3,7 @@
 #### 什么是method？
 function就是可以通过名字可以调用的一段代码,我们可以传参数进去，得到返回值。所有的参数都是明确的传递过去的。  
 method是function与对象的结合。我们调用一个方法的时候，有些参数是隐含的传递过去的。下文会详细介绍。
-#### instance method
+#### instancemethod
 
     In [5]: class Human(object):
        ...:     def __init__(self, weight):
@@ -101,7 +101,7 @@ method是function与对象的结合。我们调用一个方法的时候，有些
 3.  可以使用和类的实例调用，但是都是将类作为隐含参数传递过去。
 2.  使用类来调用 `classmethod` 可以避免将类实例化的开销。
 
-#### static method
+#### staticmethod
 
     In [1]: class Human(object):
        ...:     @staticmethod
