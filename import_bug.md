@@ -7,13 +7,13 @@
 在服务器上程序中遇到一个 `import` 卡死的情况，而且这个bug只能在服务器上重现，我的电脑上不会发生。现在去掉一些无用的代码，可以抽象出如下的代码。
 **bar.py**
 
-        # coding=utf-8
-  
-        from threading import Thread
-  
-        class Bar(Thread):
-        def run(self):
-            u"知乎".encode("utf-8")
+    # coding=utf-8
+
+    from threading import Thread
+
+    class Bar(Thread):
+    def run(self):
+        u"知乎".encode("utf-8")
   
     bar = Bar()
     bar.start()
