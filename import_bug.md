@@ -13,8 +13,8 @@
     from threading import Thread
 
     class Bar(Thread):
-    def run(self):
-        u"知乎".encode("utf-8")
+        def run(self):
+            u"知乎".encode("utf-8")
   
     bar = Bar()
     bar.start()
