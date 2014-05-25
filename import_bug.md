@@ -4,7 +4,7 @@
    奇怪的 dead lock
 ==========
 
-在服务器上程序中遇到一个 `import` 卡死的情况，而且这个bug只能在服务器上重现，我的电脑上不会发生。现在去掉一些无用的代码，可以抽象出如下的代码。
+在服务器上程序中遇到一个 `import` 卡死的情况，而且这个 bug 只能在服务器上重现，我的电脑上不会重现。去掉一些无用的代码，可以抽象出如下的代码。
 
 **bar.py**
 
@@ -43,9 +43,9 @@
     threading.py(242):             if timeout is None:
     threading.py(243):                 waiter.acquire()
     
-我们很明显的看到了程序是卡在了**获得锁的时候**，我的程序里没有加锁啊，为什么出现死锁呢？通过调用记录向上追溯看到
+我们很明显的看到了程序是卡在了**获得锁的时候**，但是我的程序里没有明确的加锁啊，为什么出现这种情况呢？通过调用记录向上追溯看到
 `mod = __import__('encodings.' + modname, fromlist=_import_tail, level=0)`
-是这一步引入了最后的锁，发现包含这行代码的文件是 `/usr/lib/python2.7/encodings/__init__.py` ,大致猜出是执行`u"知乎".encode("utf-8")`卡死的。
+是这一步引入了最后的锁，发现包含这行代码的文件是 `/usr/lib/python2.7/encodings/__init__.py`，大致猜出是执行`u"知乎".encode("utf-8")`卡死的。
 
 现在再看 `__import__` 的实现，发现 `PyImport_ImportModuleLevel` 调用了 `_PyImport_AcquireLock`，当  `import_module_level` 成功后调用 `_PyImport_ReleaseLock`。
 
@@ -85,10 +85,11 @@
 至此这个 bug，终于搞清楚了，真是艰难。
 教训就是**不要在 import 的时候直接开启一个线程**，否则这种死锁的 bug，可不是一般的难调。。
 
-
+这个问题得以解决，绝大部分的功劳属于[安江泽][4]。
 
 
 
   [1]: https://docs.python.org/2/library/trace.html
   [2]: http://hg.python.org/cpython/file/7caf7401aece/Python/import.c#l292
   [3]: http://hg.python.org/cpython/file/7caf7401aece/Lib/encodings/__init__.py#l72
+  [4]: http://www.zhihu.com/people/gnap
