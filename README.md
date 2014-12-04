@@ -10,3 +10,5 @@ insight_python
 [字符编码的奥秘](https://github.com/acmerfight/insight_python/blob/master/Unicode_and_Character_Sets.md)
 
 [Python 中 is 和 id 的神奇现象](https://github.com/acmerfight/insight_python/blob/master/is_id.md)
+
+[Python 中 list 的实现](https://github.com/acmerfight/insight_python/blob/master/list_implementation.md)
