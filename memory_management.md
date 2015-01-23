@@ -19,3 +19,5 @@
     *  快速适配算法（为那些常用大小的空闲区维护单独的链表）
 也可以为进程和空闲区维护各自的链表，这样能提高以上 4  个算法的速度，但是这样会增加复杂度，而且使内存释放速度变慢。
 ![](https://raw.githubusercontent.com/acmerfight/insight_python/master/images/system1.png)
+
+### 虚拟内存
