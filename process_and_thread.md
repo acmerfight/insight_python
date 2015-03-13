@@ -1,4 +1,4 @@
-# Prcocess and Thread 
+# Prcocess and Thread
 
 
 ### Process
@@ -20,3 +20,5 @@
 3. Thread has a program counter that keeps track of which instruc- tion to execute next. It has registers, which hold its current working variables. It has a stack, which contains the execution history, with one frame for each procedure called but not yet returned from. Although a thread must execute in some process, the thread and its process are different concepts and can be treated sepa- rately.
 
 4. Processes are used to group resources together; threads are the entities scheduled for execution on the CPU.
+
+![](https://github.com/acmerfight/insight_python/blob/master/images/process1.png)
