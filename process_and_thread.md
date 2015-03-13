@@ -1,4 +1,4 @@
-# 进程与线程
+# Prcocess and Thread 
 
 
 ### Process
@@ -15,4 +15,8 @@
     3. threads yield no performance gain when all of them are CPU bound, but when there is substantial computing and also substantial I/O, having threads allows these activi- ties to overlap, thus speeding up the application.(only one cpu)
     4. threads are useful on systems with multiple CPUs, where real parallelism is possible.
 
-2. 
+2. Prcocess it is a way to group related resources together. A process has an address space containing program text and data, as well as other resources.
+
+3. Thread has a program counter that keeps track of which instruc- tion to execute next. It has registers, which hold its current working variables. It has a stack, which contains the execution history, with one frame for each procedure called but not yet returned from. Although a thread must execute in some process, the thread and its process are different concepts and can be treated sepa- rately.
+
+4. Processes are used to group resources together; threads are the entities scheduled for execution on the CPU.
