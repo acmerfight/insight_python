@@ -35,7 +35,7 @@
         - No assumptions may be made about speeds or the number of CPUs.
         - No process running outside its critical region may block other processes.
         - No process should have to wait forever to enter its critical region.
-
+        
 **Scheduling**
 
  1. This situation occurs whenever two or more of them are simultaneously in the ready state. If only one CPU is available, a
@@ -44,6 +44,12 @@ choice has to be made which process to run next. The part of the operating syste
  2. when the CPU copies bits to a video RAM to update the screen, it is computing, not doing I/O, because the CPU is in use. I/O in this sense is when a process enters the blocked state waiting for an external device to complete its work.
  
  3. The basic idea here is that if an I/O-bound process wants to run, it should get a chance quickly so that it can issue its disk request and keep the disk busy. when processes are I/O bound, it takes quite a few of them to keep the CPU fully occupied.
- 
+
+ 4. When to Schedule
+    
+    - when a new process is created, a decision needs to be made whether to run the parent process or the child process.
+    - a scheduling decision must be made when a process exits.
+    - when a process blocks on I/O, on a semaphore, or for some other rea- son, another process has to be selected to run. 
+  
 
  
