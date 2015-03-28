@@ -49,7 +49,7 @@ choice has to be made which process to run next. The part of the operating syste
     
     - when a new process is created, a decision needs to be made whether to run the parent process or the child process.
     - a scheduling decision must be made when a process exits.
-    - when a process blocks on I/O, on a semaphore, or for some other rea- son, another process has to be selected to run. 
+    - when a process blocks on I/O, on a semaphore, or for some other reason, another process has to be selected to run. 
   
 
  
