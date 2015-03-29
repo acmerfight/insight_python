@@ -35,7 +35,7 @@
         - No assumptions may be made about speeds or the number of CPUs.
         - No process running outside its critical region may block other processes.
         - No process should have to wait forever to enter its critical region.
-        
+
 **Scheduling**
 
  1. This situation occurs whenever two or more of them are simultaneously in the ready state. If only one CPU is available, a
@@ -46,14 +46,14 @@ choice has to be made which process to run next. The part of the operating syste
  3. The basic idea here is that if an I/O-bound process wants to run, it should get a chance quickly so that it can issue its disk request and keep the disk busy. when processes are I/O bound, it takes quite a few of them to keep the CPU fully occupied.
 
  4. When to Schedule
-    
+
     - when a new process is created, a decision needs to be made whether to run the parent process or the child process.
     - a scheduling decision must be made when a process exits.
-    - when a process blocks on I/O, on a semaphore, or for some other reason, another process has to be selected to run. 
+    - when a process blocks on I/O, on a semaphore, or for some other reason, another process has to be selected to run.
     - when an I/O interrupt occurs, a scheduling decision may be made.
 
- 5. Scheduling algorithms can be divided into two categories with respect to how they deal with clock interrupts. 
-    - A **nonpreemptive scheduling** algorithm picks a process to run and then just lets it run until it blocks (either on I/O or waiting for another process) or until it voluntarily releases the CPU. 
+ 5. Scheduling algorithms can be divided into two categories with respect to how they deal with clock interrupts.
+    - A **nonpreemptive scheduling** algorithm picks a process to run and then just lets it run until it blocks (either on I/O or waiting for another process) or until it voluntarily releases the CPU.
     - A **preemptive scheduling** algorithm picks a process and lets it run for a maximum of some fixed time.
 
  6. Scheduling Algorithm Goals
