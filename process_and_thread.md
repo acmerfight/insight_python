@@ -1,4 +1,4 @@
-# Prcocess and Thread 
+# Processes and Threads
 
 
 ### Process
