@@ -49,7 +49,44 @@ choice has to be made which process to run next. The part of the operating syste
     
     - when a new process is created, a decision needs to be made whether to run the parent process or the child process.
     - a scheduling decision must be made when a process exits.
-    - when a process blocks on I/O, on a semaphore, or for some other rea- son, another process has to be selected to run. 
-  
+    - when a process blocks on I/O, on a semaphore, or for some other reason, another process has to be selected to run. 
+    - when an I/O interrupt occurs, a scheduling decision may be made.
 
+ 5. Scheduling algorithms can be divided into two categories with respect to how they deal with clock interrupts. 
+    - A **nonpreemptive scheduling** algorithm picks a process to run and then just lets it run until it blocks (either on I/O or waiting for another process) or until it voluntarily releases the CPU. 
+    - A **preemptive scheduling** algorithm picks a process and lets it run for a maximum of some fixed time.
+
+ 6. Scheduling Algorithm Goals
+    - All systems
+        - Fairness - giving each process a fair share of the CPU            - Policy enforcement - seeing that stated policy is carried         - out Balance - keeping all parts of the system busy
+    - Batch systems
+        - Throughput - maximize jobs per hour
+        - Turnaround time - minimize time between submission and            - termination CPU utilization - keep the CPU busy all the time
+    - Interactive systems
+        - Response time - respond to requests quickly                       - Proportionality - meet users' expectations
+    - Real-time systems
+        - Meeting deadlines - avoid losing data
+        - Predictability - avoid quality degradation in multimedia systems
+
+ 7. Scheduling in Batch Systems
+    - First-Come First-Served
+    - Shortest Job First
+    - Shortest Remaining Time Next
  
+ 8. Scheduling in Interactive Systems
+    - **Round-Robin Scheduling** 
+        - Setting the quantum too short causes too many process switches and lowers the CPU efficiency, but setting it too long may cause poor response to short interactive requests. A quantum around 20-50 msec is often a reasonable compromise.
+    - **Priority Scheduling**
+        - To prevent high-priority processes from running indefinitely, the scheduler may decrease the priority of the currently running process at each clock tick (i.e., at each clock interrupt). If this action causes its priority to drop below that of the next highest process, a process switch occurs. Alternatively, each process may be assigned a maximum time quantum that it is allowed to run. When this quantum is used up, the next highest priority process is given a chance to run. 
+    - **Multiple Queues**
+        - it was more efficient to give CPU-bound processes a large quantum once in a while, rather than giving them small quanta frequently (to reduce swapping). Giving all processes a large quantum would mean poor response time. The solution was to set up priority classes. Processes in the highest class were run for one quantum. Processes in the next-highest class were run for two quanta. Processes in the next class were run for four quanta, and so on. Whenever a process used up all the quanta allocated to it, it was moved down one class.
+    - **Shortest Process Next**
+        - The technique of estimating the next value in a series by taking the weighted average of the current measured value and the previous estimate is sometimes called aging. It is applicable to many situations where a prediction must be made based on previous values. 
+    - **Guaranteed Scheduling** 
+    - **Lottery Scheduling**
+        - The basic idea is to give processes lottery tickets for various system resources, such as CPU time. Whenever a scheduling decision has to be made, a lot- tery ticket is chosen at random, and the process holding that ticket gets the re- source. When applied to CPU scheduling, the system might hold a lottery 50 times a second, with each winner getting 20 msec of CPU time as a prize. 
+    - **Fair-Share Scheduling** 
+        - Based on process owner.
+        
+ 9. **Scheduling in Real-Time Systems**
+    - Real-time systems are generally categorized as hard real time, meaning there are absolute deadlines that must be met, or else, and soft real time, meaning that missing an occasional deadline is undesirable, but nevertheless tolerable. 
