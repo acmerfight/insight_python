@@ -15,7 +15,7 @@
     3. threads yield no performance gain when all of them are CPU bound, but when there is substantial computing and also substantial I/O, having threads allows these activi- ties to overlap, thus speeding up the application.(only one cpu)
     4. threads are useful on systems with multiple CPUs, where real parallelism is possible.
 
- 5. Prcocess it is a way to group related resources together. A process has an address space containing program text and data, as well as other resources. 
+ 5. Prcocess it is a way to group related resources together. A process has an address space containing program text and data, as well as other resources.
 
  6. Thread has a program counter that keeps track of which instruc- tion to execute next. It has registers, which hold its current working variables. It has a stack, which contains the execution history, with one frame for each procedure called but not yet returned from. Although a thread must execute in some process, the thread and its process are different concepts and can be treated sepa- rately.
 
@@ -23,7 +23,7 @@
 
  8. **Threads vs. processes**
     1. processes are typically independent, while threads exist as subsets of a process.
-    2. processes carry considerably more state information than threads, whereas multiple threads within a process share process state as well as memory and other resources. 
+    2. processes carry considerably more state information than threads, whereas multiple threads within a process share process state as well as memory and other resources.
     3. processes have separate address spaces, whereas threads share their address space
     4. processes interact only through system-provided inter-process communication mechanisms.
     5. context switching between threads in the same process is typically faster than context switching between processes.
@@ -72,21 +72,21 @@ choice has to be made which process to run next. The part of the operating syste
     - First-Come First-Served
     - Shortest Job First
     - Shortest Remaining Time Next
- 
+
  8. Scheduling in Interactive Systems
-    - **Round-Robin Scheduling** 
+    - **Round-Robin Scheduling**
         - Setting the quantum too short causes too many process switches and lowers the CPU efficiency, but setting it too long may cause poor response to short interactive requests. A quantum around 20-50 msec is often a reasonable compromise.
     - **Priority Scheduling**
-        - To prevent high-priority processes from running indefinitely, the scheduler may decrease the priority of the currently running process at each clock tick (i.e., at each clock interrupt). If this action causes its priority to drop below that of the next highest process, a process switch occurs. Alternatively, each process may be assigned a maximum time quantum that it is allowed to run. When this quantum is used up, the next highest priority process is given a chance to run. 
+        - To prevent high-priority processes from running indefinitely, the scheduler may decrease the priority of the currently running process at each clock tick (i.e., at each clock interrupt). If this action causes its priority to drop below that of the next highest process, a process switch occurs. Alternatively, each process may be assigned a maximum time quantum that it is allowed to run. When this quantum is used up, the next highest priority process is given a chance to run.
     - **Multiple Queues**
         - it was more efficient to give CPU-bound processes a large quantum once in a while, rather than giving them small quanta frequently (to reduce swapping). Giving all processes a large quantum would mean poor response time. The solution was to set up priority classes. Processes in the highest class were run for one quantum. Processes in the next-highest class were run for two quanta. Processes in the next class were run for four quanta, and so on. Whenever a process used up all the quanta allocated to it, it was moved down one class.
     - **Shortest Process Next**
-        - The technique of estimating the next value in a series by taking the weighted average of the current measured value and the previous estimate is sometimes called aging. It is applicable to many situations where a prediction must be made based on previous values. 
-    - **Guaranteed Scheduling** 
+        - The technique of estimating the next value in a series by taking the weighted average of the current measured value and the previous estimate is sometimes called aging. It is applicable to many situations where a prediction must be made based on previous values.
+    - **Guaranteed Scheduling**
     - **Lottery Scheduling**
-        - The basic idea is to give processes lottery tickets for various system resources, such as CPU time. Whenever a scheduling decision has to be made, a lot- tery ticket is chosen at random, and the process holding that ticket gets the re- source. When applied to CPU scheduling, the system might hold a lottery 50 times a second, with each winner getting 20 msec of CPU time as a prize. 
-    - **Fair-Share Scheduling** 
+        - The basic idea is to give processes lottery tickets for various system resources, such as CPU time. Whenever a scheduling decision has to be made, a lot- tery ticket is chosen at random, and the process holding that ticket gets the re- source. When applied to CPU scheduling, the system might hold a lottery 50 times a second, with each winner getting 20 msec of CPU time as a prize.
+    - **Fair-Share Scheduling**
         - Based on process owner.
-        
+
  9. **Scheduling in Real-Time Systems**
-    - Real-time systems are generally categorized as hard real time, meaning there are absolute deadlines that must be met, or else, and soft real time, meaning that missing an occasional deadline is undesirable, but nevertheless tolerable. 
+    - Real-time systems are generally categorized as hard real time, meaning there are absolute deadlines that must be met, or else, and soft real time, meaning that missing an occasional deadline is undesirable, but nevertheless tolerable.
