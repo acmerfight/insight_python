@@ -17,5 +17,23 @@
 提供及时响应，高效，容错，简单的服务。
 
 #### 常见的并发模型
-##### 进程，线程
-进程是具有独立功能的程序关于某个数据集合上的一次运行活动，是系统进行资源分配和调度的独立单位。线程是操作系统能够运行运算调度的最小单位。进程线程最大的区别线程运行在共享的内存地址空间里，共享堆的资源。而进程运行在不同的内存地址空间里，不共享堆的资源。
+##### 进程，线程，锁
+**基础概念**
+进程是具有独立功能的程序关于某个数据集合上的一次运行活动，是系统进行资源分配和调度的独立单位。线程是操作系统能够运行运算调度的最小单位。
+进程线程最大的区别线程运行在共享的内存地址空间里，共享堆的资源。而进程运行在不同的内存地址空间里，不共享堆的资源。可以把进程理解为一组共享地址空间的线程的集合。
+**调度**
+
+在 Linux 下 scheduler 调度的单位是可以调度的 task。
+task 可以是
+
+ - 一个单线程的进程
+ - 一个多线程进程中的任何线程
+可以看出在 Linux 里调度时不区分进程和线程，
+
+
+线程需要在 CPU 上运行， scheduler 就是控制
+
+
+http://stackoverflow.com/questions/15601155/does-linux-schedule-a-process-or-a-thread
+http://stackoverflow.com/questions/11998974/linux-threads-and-process-scheduling-priorities
+http://stackoverflow.com/questions/8463741/how-linux-handles-threads-and-process-scheduling
