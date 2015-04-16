@@ -30,6 +30,10 @@ task 可以是
 因为进程需要在 CPU 上运行， scheduler 就是控制，协调进程对于 CPU 的竞争，即按一定的调度算法从就绪队列中选择一个进程，把 CPU 的使用权交给被选中的进程如果没有就绪进程，系统会安排一个系统空闲线程。
 目前 Linux 采取的调度算法是 [Completely Fair Scheduler][1] ，这个算法采用了红黑树的数据结构，红黑树中的节点是以处理器的执行时间为索引的，为每个进程计算一个最大的执行时间。这个时间是以所有进程完全平等共享 CPU 的处理能力为基础的。当 scheduler 调度到一个新进程运行时，会按照以下步骤处理
 
+最左侧的节点的进程被选中执行
+如果进程执行结束，进程会从红黑树中删除
+
+
 http://stackoverflow.com/questions/15601155/does-linux-schedule-a-process-or-a-thread
 http://stackoverflow.com/questions/11998974/linux-threads-and-process-scheduling-priorities
 http://stackoverflow.com/questions/8463741/how-linux-handles-threads-and-process-scheduling
