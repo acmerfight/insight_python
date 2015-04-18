@@ -33,7 +33,7 @@ task 可以是
  1. 最左侧的节点的进程被选中执行
  2. 如果进程执行结束，进程节点会从红黑树中删除
  3. 如果进程达到了最大的运行时间或者停止了会根据最新的运行时间插入红黑树中
- 4. 回到第一步，最左侧的进程被选中，持续整个流程
+ 4. 回到第一步，最左侧的进程节点被选中，循环执行整个流程
 
 http://stackoverflow.com/questions/15601155/does-linux-schedule-a-process-or-a-thread
 http://stackoverflow.com/questions/11998974/linux-threads-and-process-scheduling-priorities
