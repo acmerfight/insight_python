@@ -35,6 +35,8 @@ task 可以是
  3. 如果进程达到了最大的运行时间或者停止了会根据最新的运行时间插入红黑树中
  4. 回到第一步，最左侧的进程节点被选中，循环执行整个流程
 
+如果这个进程花费了大量时间休眠，那么它花费的时间的值非常小，并且当它需要执行的时候提升它的优先级。因此这样的进程并不会比其他一直运行的进程获得的运行资源少。
+
 http://stackoverflow.com/questions/15601155/does-linux-schedule-a-process-or-a-thread
 http://stackoverflow.com/questions/11998974/linux-threads-and-process-scheduling-priorities
 http://stackoverflow.com/questions/8463741/how-linux-handles-threads-and-process-scheduling
