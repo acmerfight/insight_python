@@ -20,3 +20,5 @@ insight_python
 [操作系统内存管理](https://github.com/acmerfight/insight_python/blob/master/memory_management.md)
 
 [进程与线程](https://github.com/acmerfight/insight_python/blob/master/process_and_thread.md)
+
+[并发浅见](https://github.com/acmerfight/insight_python/blob/master/concurrency.md)
