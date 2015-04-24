@@ -39,6 +39,11 @@ task 可以是
 
 线程之间之间的同步通过锁来进行线程同步，但是加锁是一件很复杂和困难的事儿，例如哲学家就餐问题，读者写者问题。
 
+#### CSP
+
+CSP 有独立的，并发执行的实体组成，并发实体之间通过消息进行通信，CSP 模型的消息通过 channel 来进行传递。
+
+
 http://stackoverflow.com/questions/15601155/does-linux-schedule-a-process-or-a-thread
 http://stackoverflow.com/questions/11998974/linux-threads-and-process-scheduling-priorities
 http://stackoverflow.com/questions/8463741/how-linux-handles-threads-and-process-scheduling
