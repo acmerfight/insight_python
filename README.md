@@ -21,4 +21,4 @@ insight_python
 
 [进程与线程](https://github.com/acmerfight/insight_python/blob/master/process_and_thread.md)
 
-[并发浅见](https://github.com/acmerfight/insight_python/blob/master/concurrency.md)
+[并发浅见](https://github.com/acmerfight/insight_python/blob/master/concurrency/concurrency.md)
