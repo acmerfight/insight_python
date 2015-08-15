@@ -25,7 +25,7 @@
 
 执行 `python foo.py`，程序就卡死不动了。
 
-首先必须要知道的是程序卡在哪里了，所以使用 [trace][1] 模块去看程序的执行流程。
+要解决这个问题，首先必须要知道的是程序卡在哪里了，所以使用 [trace][1] 模块去看程序的执行流程。
 执行 `python -m trace -t foo.py`，这是程序调用的最后的部分。
 
     __init__.py(93):     for modname in modnames:
