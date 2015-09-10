@@ -1,6 +1,6 @@
 
 
-    
+ 
    奇怪的 dead lock
 ==========
 
@@ -20,7 +20,7 @@
     bar.start()
     bar.join()
 **foo.py**
-    
+
     import bar
 
 执行 `python foo.py`，程序就卡死不动了。
@@ -42,7 +42,7 @@
     threading.py(241):         try:    # restore state no matter what (e.g., KeyboardInterrupt)
     threading.py(242):             if timeout is None:
     threading.py(243):                 waiter.acquire()
-    
+
 我们很明显的看到了程序是卡在了**获得锁的时候**，但是我的程序里没有明确的加锁啊，为什么出现这种情况呢？通过调用记录向上追溯看到
 `mod = __import__('encodings.' + modname, fromlist=_import_tail, level=0)`
 是这一步引入了最后的锁，发现包含这行代码的文件是 `/usr/lib/python2.7/encodings/__init__.py`，大致猜出是执行`u"知乎".encode("utf-8")`卡死的。
