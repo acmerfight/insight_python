@@ -34,7 +34,7 @@
     In [5]: id(foo.bar) == id(Foo.bar)
     Out[5]: True
 
-两个对象用`is`判断是`False`，用`id`判断却是`True`，这与我们已知的事实不符啊，这种现象该如何解释呢？遇到这种情况最好的解决方法就是调用dis模块去看下两个比较语句到底做了什么。
+两个对象用`is`判断是`False`，用`id`判断却是`True`，这与我们已知的事实不符啊，这种现象该如何解释呢？遇到这种情况最好的解决方法就是调用 dis 模块去看下两个比较语句到底做了什么。
 
     In [7]: dis.dis("id(foo.bar) == id(Foo.bar)")
               0 BUILD_MAP       10340
@@ -62,7 +62,7 @@
              12 JUMP_IF_FALSE_OR_POP 11887
              15 DELETE_GLOBAL   29281 (29281)
 
-真实情况是当执行`.`操作符的时候，实际是生成了一个proxy对象，`foo.bar is Foo.bar`的时候，两个对象顺序生成，放在栈里相比较，由于地址不同肯定是`False`，但是`id(foo.bar) == id(Foo.bar)`的时候就不同了，首先生成`foo.bar`,然后计算`foo.bar`的地址，计算完之后`foo.bar`的地址之后，就没有任何对象指向`foo.bar`了，所以`foo.bar`对象就会被释放。然后生成`Foo.bar`对象，由于`foo.bar`和`Foo.bar`所占用的内存大小是一样的，所以又恰好重用了原先`foo.bar`的内存地址，所以`id(foo.bar) == id(Foo.bar)`的结果是`True`。
+真实情况是当执行`.`操作符的时候，实际是生成了一个 proxy 对象，`foo.bar is Foo.bar`的时候，两个对象顺序生成，放在栈里相比较，由于地址不同肯定是`False`，但是`id(foo.bar) == id(Foo.bar)`的时候就不同了，首先生成`foo.bar`,然后计算`foo.bar`的地址，计算完之后`foo.bar`的地址之后，就没有任何对象指向`foo.bar`了，所以`foo.bar`对象就会被释放。然后生成`Foo.bar`对象，由于`foo.bar`和`Foo.bar`所占用的内存大小是一样的，所以又恰好重用了原先`foo.bar`的内存地址，所以`id(foo.bar) == id(Foo.bar)`的结果是`True`。
 
 下面内容由邮件`Leo Jay`大牛提供，他解释的更加通透。
 
