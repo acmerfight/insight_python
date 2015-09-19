@@ -15,7 +15,7 @@
     class Bar(Thread):
         def run(self):
             u"知乎".encode("utf-8")
-  
+ 
     bar = Bar()
     bar.start()
     bar.join()
@@ -64,7 +64,7 @@
         }
         return result;
     }
-    
+
 再去继续看 [_PyImport_AcquireLock][2] 的代码可以明显的看到有一个 `import_lock` 存在。也就是 `import` 的时候会引入`import_lock`, 当我们 `import bar` 的时候，首先会获得 `import_lock`，但是当我们执行到 `mod = __import__('encodings.' + modname, fromlist=_import_tail, level=0)`的时候新创建的线程会再次去请求获得`import_lock`。在一把锁内部，再次请求获得这把锁造成了死锁，使程序直接卡住了。在服务器上把`u"知乎".encode("utf-8")`  换成 `import socket` 照样会卡在 `import_lock` 处。
 
 通过分析，现在终于找出原因了。但是为什么只能在服务上重现呢？为什么本地的机器没有问题？
@@ -72,7 +72,7 @@
 我把 `u"知乎".encode("utf-8")` 换成 `import socket` ，在本地执行也会卡在 `import_lock`。那为什么 `u"知乎".encode("utf-8")` 为啥在本地不卡呢。那就用 `ipdb` 看看`u"知乎".encode("utf-8")`在本地和服务器上的调用有啥不同吧。
 
      #coding=utf-8
-      
+
      import ipdb
      ipdb.set_trace()
      u"知乎".encode("utf-8")
