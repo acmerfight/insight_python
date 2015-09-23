@@ -1,4 +1,4 @@
-##Python中list 的实现  
+##Python 中 list 的实现  
 [原文链接](http://www.laurentluce.com/posts/python-list-implementation/)  
 这篇文章介绍了Python中list是如何实现的。  
 在Python中list特别有用。让我们来看下list的内部是如何实现的。  
@@ -18,7 +18,7 @@
     3
 正如你所看到的，list是可以迭代的。  
 
-###List对象的C结构  
+###List 对象的C结构  
 Python中list是用下边的C语言的结构来表示的。ob_item是用来保存元素的指针数组，allocated是ob_item预先分配的内存总容量
 
     typedef struct {
