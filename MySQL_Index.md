@@ -29,3 +29,9 @@ adding new one
 of database writes
     *   **Reads** - Wasted space on disk and in memory;
 additional overhead during query optimization
+5.  **Indexing Innodb Tables**
+    *   Data is clustered by Primary Key
+        *   Pick PRIMARY KEY what suites you best
+    *   PRIMARY KEY is implicitly appended to all indexes
+        *   KEY (A) is really KEY (A,ID) internally
+        *   Useful for sorting, Covering Index.
