@@ -35,3 +35,20 @@ additional overhead during query optimization
     *   PRIMARY KEY is implicitly appended to all indexes
         *   KEY (A) is really KEY (A,ID) internally
         *   Useful for sorting, Covering Index.
+6.  **Multi Column indexes for efficient sorting**
+    *   It becomes even more restricted!
+    *   KEY(A,B)
+    *   Will use Index for Sorting
+        *   **ORDER BY A** - sorting by leading column
+        *   **A=5 ORDER BY B** - EQ filtering by 1st and sorting by 2nd
+        *   **ORDER BY A DESC, B DESC** - Sorting by 2 columns in same order
+        *   **A>5 ORDER BY A** - Range on the column, sorting on the same
+    *   Will NOT use Index for Sorting
+        *   **ORDER BY B** - Sorting by second column in the index
+        *   **A>5 ORDER BY B** – Range on first column, sorting by second
+        *   **A IN(1,2) ORDER BY B** - In-Range on first column
+        *   **ORDER BY A ASC, B DESC** - Sorting in the different order
+    *   MySQL Using Index for Sorting Rules
+        *   You can’t sort in different order by 2 columns
+        *   You can only have Equality comparison (=) for
+columns which are not part of ORDER BY
