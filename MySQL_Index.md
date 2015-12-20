@@ -58,3 +58,12 @@ columns which are not part of ORDER BY
         *   KEY(CUSTOMER_ID,STATUS)
     *   Access is a lot more sequential
         *   Access through data pointers is often quite “random”
+8.  **Using Multiple Indexes for the table**
+    *   MySQL Can use More than one index
+        *   “Index Merge”
+    *   SELECT * FROM TBL WHERE A=5 AND B=6
+        *   Can often use Indexes on (A) and (B) separately
+        *   Index on (A,B) is much better
+    *   SELECT * FROM TBL WHERE A=5 OR B=6 
+        *   2 separate indexes is as good as it gets
+        *   Index (A,B) can’t be used for this query
