@@ -20,6 +20,7 @@ pointer
 column, then second etc
     *   It is still one BTREE Index; not a separate BTREE
 index for each level
+
 4. **Overhead of The Indexing**
     *   Indexes are costly; Do not add more than you
 need
@@ -29,12 +30,14 @@ adding new one
 of database writes
     *   **Reads** - Wasted space on disk and in memory;
 additional overhead during query optimization
+
 5.  **Indexing Innodb Tables**
     *   Data is clustered by Primary Key
         *   Pick PRIMARY KEY what suites you best
     *   PRIMARY KEY is implicitly appended to all indexes
         *   KEY (A) is really KEY (A,ID) internally
         *   Useful for sorting, Covering Index.
+    
 6.  **Multi Column indexes for efficient sorting**
     *   It becomes even more restricted!
     *   KEY(A,B)
@@ -52,12 +55,14 @@ additional overhead during query optimization
         *   You can’t sort in different order by 2 columns
         *   You can only have Equality comparison (=) for
 columns which are not part of ORDER BY
+
 7.  **Avoiding Reading The data**
     *   Reading Index ONLY and not accessing the “data”
         *   EXAMPLE: SELECT STATUS FROM ORDERS WHERE CUSTOMER_ID=123
         *   KEY(CUSTOMER_ID,STATUS)
     *   Access is a lot more sequential
         *   Access through data pointers is often quite “random”
+        
 8.  **Using Multiple Indexes for the table**
     *   MySQL Can use More than one index
         *   “Index Merge”
