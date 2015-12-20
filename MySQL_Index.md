@@ -52,3 +52,9 @@ additional overhead during query optimization
         *   You can’t sort in different order by 2 columns
         *   You can only have Equality comparison (=) for
 columns which are not part of ORDER BY
+7.  **Avoiding Reading The data**
+    *   Reading Index ONLY and not accessing the “data”
+        *   EXAMPLE: SELECT STATUS FROM ORDERS WHERE CUSTOMER_ID=123
+        *   KEY(CUSTOMER_ID,STATUS)
+    *   Access is a lot more sequential
+        *   Access through data pointers is often quite “random”
