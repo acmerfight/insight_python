@@ -1,6 +1,6 @@
 # MySQL Index
 
-本文全部来源于 https://www.percona.com/sites/default/files/presentations/MySQL-Indexing-Best-Practices-for-MySQL-5.6.pdf
+声明：本文全部来源于 https://www.percona.com/sites/default/files/presentations/MySQL-Indexing-Best-Practices-for-MySQL-5.6.pdf, 版权属于原作者。此文有部分删减, 保留了我需要的内容。
 
 1. **What are indexes for ?** 
     *   Speed up access in the database
