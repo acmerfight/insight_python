@@ -1,4 +1,4 @@
-# paxos 简易推导
+# paxos
 
 声明：
 1. 本文思路完成模仿 [朱一聪][1] 老师的的 [如何浅显易懂地解说 Paxos][2] 而得，版权属于  [朱一聪][3] 老师 。只是为了自己理解更加透彻，又重新推导了一下而已。文章发出已经获得 [朱一聪][4] 老师的同意。
@@ -83,8 +83,8 @@ p3 proposal: v = a
 在这个策略中，有两个值先后达成共识，不满足安全性。
 ##### 结论 1.2：
 按照现有 1.2 策略存在proposal id 小 proposal 先到达，系统多次就不同的值达成共识的问题。从如下几个角度思考解决此问题
-    1. p3 可以拒绝 p2 proposal(p2 proposal 先到达 p3，p2_proposal_id < p1_proposal_id )
-    2. 限制 p1 提出的 proposal
+   1. p3 可以拒绝 p2 proposal(p2 proposal 先到达 p3，p2_proposal_id < p1_proposal_id )
+   2. 限制 p1 提出的 proposal
     
 #### 1.3 p3 可以拒绝 p2 proposal 角度
 1.  发送带有 proposal_id  PreProposal,
@@ -166,28 +166,27 @@ Pk 进程集合：Qi 和 Qj 的进程集合交集
 只要 Pk 能够拒绝 Proposal-i 和 Proposal-j 的一个就是安全的
 
 每个 Proposal-j-id < Proposal-i-id
-1. Proposal-j 到达 Pk
-2. PreProposal-i 到达 Pk
-4. Pk 回复（Proposal-j-id， v = b）给 Pi
-5. Pi 接受到（Proposal-j-id，v = b），将 Proposal-i 原先的 v = a 修改成 v = b，然后进行广播。
-6. 系统就 v = b 达成共识。
+1. Proposal-j 到达部分进程，此时系统未达成共识
+2. PreProposal-i 到达部分进程，此时系统未达成共识
+3. 所有接收到 PreProposal-i 的进程回复（Proposal-j-id， v = b）或者 （NULL， NULL） 给 Pi
+4. Pi 接受到（Proposal-j-id，v = b），将 Proposal-i 原先的 v = a 修改成 v = b，然后进行广播。
+5. 系统就 v = b 达成共识。
 
 ##### 场景 1.6 不同的 proposal 由 2 到 N
 假设 j - i = N，b - a = N
-Pi Pi+1 ... Pi+N-1 Pj 每个进程组都会提出 Proposal(v = a, a+1, .. a+N-1, b) Proposal_id 顺序相反
+Pi Pi+1 ... Pi+N-1 Pj 每个进程组都会提出 Proposal(v = a, a+1, .. a+N-1, b) Proposal_id 大小顺序相反
 Qi -> Qj 与 Pi 相对
 Pk 是收到了很多不同提案的进程的集合，但是一直没有达成共识。
 
 1. Proposal-i+1 Proposal-i+2 到达 Pk，系统并没有达成共识。
-2. Proposal-j 到达 Pk 
-3. Pk 回复 [(Proposal-i+1-id, v = a + 1), (Proposal-i+2-id, v = a + 2)] 给 Pj 
+2. PreProposal-j 发出到达部分进程 
+3. 接收到 PreProposal-j 的进程选择 [(Proposal-i+1-id, v = a + 1), (Proposal-i+2-id, v = a + 2)] 其中的一个或者两个一起回复给 Pj
 4. Pj 应该选择哪个 v 值修改自己的 proposal 呢
     - 回顾前边的逻辑，每个进程会拒绝 Proposal-id 较小的提案，Proposal-i+1-id > Proposal-i+2-id
     - Proposal-i+1-id 相比 Proposal-i+2-id 的提案肯定先到 Pk 的，系统还有一部分进程没有接收到 (Proposal-i+1-id, v = a + 1)，没有就 (Proposal-i+1-id, v = a + 1) 形成共识
     -  假设 Pj 选择 proposal_id 较小的 proposal ，那么会选择  （Proposal-i+2-id, v = a + 2) ，在 Pj 发出 （Proposal-j, v = a + 2) 之前，没有收到 (Proposal-i+1-id, v = a + 1) 的进程可能恰好收到了，系统就 v = a + 1 达成了共识。此后（Proposal-j, v = a + 2) 达到了， 系统又 v = a + 2 达成的共识。系统两次达成共识，存在问题。
     -  假设 Pj 选择 proposal_id 较大的 proposal，那么会选择  （Proposal-i+1-id, v = a + 1) ，在 Pj 发出 （Proposal-j, v = a + 1) 之前，没有收到 (Proposal-i+1-id, v = a + 1) 的进程可能恰好收到了，系统就 v = a + 1 达成了共识。此后（Proposal-j, v = a + 2) 达到了，还是 v = a + 1。不存在问题。
     -   系统选择 proposal_id 较大的修改依据
-
 5. Pj 选择 proposal_id 较大的 proposal，修改 v = a + 1，并发出 （Proposal-j, v = a + 2）
 6. 系统就 v = a + 2 达成共识
 
@@ -201,9 +200,25 @@ Acceptor： 接受题提案的进程
 ##### Phase 1:
 1. Proposer 选择一个提案编号 n，然后向 Acceptors 的某个 majority 集合的成员发送编号为 n 的prepare请求。
 2. 如果一个Acceptor收到一个编号为 n 的prepare请求，且 n 大于它已经响应的所有prepare请求的编号，那么它就会保证不会再通过(accept)任何编号小于 n 的提案，同时将它已经通过的最大编号的提案(如果存在的话)作为响应。 
+
 ##### Phase 2
-1. 如果 Proposer 收到来自半数以上的 Acceptor 对于它的 prepare 请求(编号为 n)的响应，那么它就会发送一个针对编号为 n ，value值为 v 的提案的 accept 请求给 Acceptors，在这里 v 是收到的响应中编号最大的提案的值，如果响应中不包含提案，那么它就是任意值。
+1. 如果 Proposer 收到来自半数以上的 Acceptor 对于它的 prepare 请求(编号为 n)的响应，那么它就会发送一个针对编号为 n ，value 值为 v 的提案的 accept 请求给 Acceptors，在这里 v 是收到的响应中编号最大的提案的值，如果响应中不包含提案，那么它就是任意值。
 2. 如果 Acceptor 收到一个针对编号 n 的提案的accept请求，只要它还未对编号大于 n 的 prepare 请求作出响应，它就可以通过这个提案。
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  
  
